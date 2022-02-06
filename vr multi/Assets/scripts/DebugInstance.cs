@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class NetworkPlayer : MonoBehaviour
+public class DebugInstance : MonoBehaviour
 {
-    public Transform Head;
-    public Transform LHand;
-    public Transform RHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +14,9 @@ public class NetworkPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void mapPosition(Transform target, Vector3 Sample )
-    {
-        
+        if(OVRInput.Get(OVRInput.Button.Four) == true)
+        {
+            PhotonNetwork.Instantiate("Network Player", transform.position, transform.rotation);
+        }
     }
 }
